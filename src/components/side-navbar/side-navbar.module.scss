@@ -1,0 +1,32 @@
+.main_side_nav{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    right: 15px;
+
+
+    .side_navber{
+        width: 100%;
+        height: auto;
+        position: sticky;
+        background-color: #ffffff;
+        left: 0;
+        ul{
+            list-style: none;
+            li{
+                font-size: 30px;
+                padding: 3.5rem 0;
+                text-align: center;
+                span{
+                @media only screen and (max-width : 1171px){
+                    display: none;
+                }
+                    position: relative;
+                    bottom: 20px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
