@@ -21,7 +21,7 @@ const LoginComponent = () => {
                 <button>Log in</button>
             </div>
             <div className={styles.login_4}>
-                <p>Don't have an account <Link>create here</Link></p>
+                <p>Don't have an account <Link to="/sign-up">create here</Link></p>
             </div>
          </div>
         </div>
