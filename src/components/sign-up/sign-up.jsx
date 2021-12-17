@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GlobalContext } from '../../context/context';
 import styles from './sign-up.module.scss';
 
 const SignUpComponent = () => {
