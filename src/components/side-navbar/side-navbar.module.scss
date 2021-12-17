@@ -1,22 +1,24 @@
 .main_side_nav{
+    background-color: #fff8f8;
     width: 100%;
-    height: auto;
+    height: 100%;
     overflow: hidden;
-    position: relative;
-    right: 15px;
-
-
+    padding-right: 20px;
     .side_navber{
         width: 100%;
-        height: auto;
         position: sticky;
-        background-color: #ffffff;
+        height: 100%;
         left: 0;
         ul{
             list-style: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items:center;
+            height: 100%;
             li{
                 font-size: 30px;
-                padding: 3.5rem 0;
                 text-align: center;
                 span{
                 @media only screen and (max-width : 1171px){
