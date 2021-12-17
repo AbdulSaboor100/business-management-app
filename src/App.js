@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import AppRoutes from './routes/AppRoutes';
+import AppRoutes from './configs/AppRoutes';
 import ContextProvider from './context/context';
 
 function App() {
