@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './sign-up.module.scss';
 
 const SignUpComponent = () => {
+    let {state , dispatch} = useContext(GlobalContext);
     let [email , setEmail] = useState('');
     let [password , setPassword] = useState('');
     let [username , setUsername] = useState('');
     let [age , setAge] = useState('')
+
+    function signUpFunc(){}
     return (
         <div className={styles.main_login}>
         <div className={styles.main2}>
@@ -26,7 +29,7 @@ const SignUpComponent = () => {
                 <input placeholder='age' type="text" value={age} onChange={(e)=>{setAge(e.target.value)}} />
             </div>
             <div className={styles.login_3}>
-                <button>Sign up</button>
+                <button onClick={signUpFunc}>Sign up</button>
             </div>
             <div className={styles.login_4}>
                 <p>Have an account <Link to="/">Login here</Link></p>
