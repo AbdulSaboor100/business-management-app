@@ -7,9 +7,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: #f8faff;
+
     padding-top: 5rem;
     .main_home1{
-        width: 73.5%;
+        width: 85%;
         font-size: 30px;
     }
     .main_home2{
@@ -21,10 +23,22 @@
         align-items: flex-start;
         
         table{
-            width: 60rem;
+            padding: 100px;
+            width: 70rem;
             height: auto;
-        background-color: #ffffff;
-        border: 1px solid rgb(197, 197, 197);
+            border: 1px solid rgb(231, 231, 231);
+            background-color: #ffffff;
+            th{
+                padding: 20px 50px;
+            }
+            td{
+                padding: 20px 50px;
+                cursor: pointer;
+                span{
+                    padding: 0 10px;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

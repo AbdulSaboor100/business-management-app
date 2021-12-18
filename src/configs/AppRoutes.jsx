@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/context';
 import MainHome from '../screens/home/home';
 import MainLogin from '../screens/login/login';
 import SignUp from '../screens/sign-up/sign-up';
-import { auth , onAuthStateChanged , getDoc , doc, db } from './firebase';
+import { auth , onAuthStateChanged , getDoc , doc, db ,onSnapshot  , collection  , getDocs} from './firebase';
 
 const AppRoutes = () => {
     let {state , dispatch} = useContext(GlobalContext);
@@ -18,6 +18,15 @@ const AppRoutes = () => {
                     let userRef = doc(db, 'users' , user.uid)
                     let userDetails = await getDoc(userRef);
                     dispatch({type : "ACTIVE_USER" , payload : userDetails.data()})
+
+                    let publicApplications = collection(db, "publcApplicaitons")
+                    onSnapshot(publicApplications , (data)=>{
+                        data.docChanges().forEach((changes)=>{
+                            if(changes.type === 'added'){
+                                dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
+                            }
+                        })
+                    })
                 } catch (error) {
                     console.log("error : " , error)
                 }

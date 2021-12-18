@@ -1,5 +1,5 @@
 export let data = {
-
+    allPublicApplications : []
 }
 
 export function reducer(state, action) {
@@ -8,6 +8,14 @@ export function reducer(state, action) {
             return {
                 ...state,
                 activeUser: action.payload
+            }
+        }
+        case "ALL_PUBLIC_APPLICATIONS": {
+            let userClone = state.allPublicApplications.slice(0)
+            userClone.push(action.payload)
+            return {
+                ...state,
+                allPublicApplications: userClone
             }
         }
 
