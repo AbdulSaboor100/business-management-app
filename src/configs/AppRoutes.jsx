@@ -32,20 +32,18 @@ const AppRoutes = () => {
         <div>
             <Router>
                 <Switch>
-                    {
-                        userStatus ? (
-                            <Route path="/home" exact>
+                    
+                            <Route path="/home" >
                                 <MainHome />
                             </Route>
-                        ) : (
+                        
                             <Route path="/" exact>
                                 <MainLogin />
-                            </Route>,
+                            </Route>
                             <Route path="/sign-up">
                                 <SignUp />
                             </Route>
-                        )
-                    }
+                      
             
                 </Switch>
             </Router>

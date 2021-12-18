@@ -6,13 +6,13 @@ import { getStorage, ref, uploadBytes ,getDownloadURL } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBlb7_ArxvyHR2od7TSkizpsln7VYXhqic",
-  authDomain: "learning-cool.firebaseapp.com",
-  projectId: "learning-cool",
-  storageBucket: "learning-cool.appspot.com",
-  messagingSenderId: "1085554141933",
-  appId: "1:1085554141933:web:fb2b6808724a522b2cfae4",
-  measurementId: "G-NR68Y9M2FW"
+  apiKey: "AIzaSyC7aZgFvHpLOmMDIKflbkFrjY9WZKqtWfo",
+  authDomain: "bmaa100.firebaseapp.com",
+  projectId: "bmaa100",
+  storageBucket: "bmaa100.appspot.com",
+  messagingSenderId: "314459392327",
+  appId: "1:314459392327:web:26a365095115d7c7322462",
+  measurementId: "G-SBXDCEHV7S"
 };
 
 // Initialize Firebase

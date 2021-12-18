@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { auth , signInWithEmailAndPassword } from '../../configs/firebase';
 import styles from './login.module.scss';
 
 const LoginComponent = () => {
     let [email , setEmail] = useState('');
     let [password , setPassword] = useState('');
+    let histroy = useHistory()
+
+    async function loginFunc(){
+        try {
+            let {user} = await signInWithEmailAndPassword(auth, email , password)
+            if(user){
+                histroy.push('/home')
+            }
+        } catch (error) {
+            console.log(error,"error")
+        }
+    }
+
     return (
         <div className={styles.main_login}>
         <div className={styles.main2}>
@@ -18,7 +32,7 @@ const LoginComponent = () => {
                 <input placeholder='Password' type="text" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
             </div>
             <div className={styles.login_3}>
-                <button>Log in</button>
+                <button onClick={loginFunc}>Log in</button>
             </div>
             <div className={styles.login_4}>
                 <p>Don't have an account <Link to="/sign-up">create here</Link></p>
