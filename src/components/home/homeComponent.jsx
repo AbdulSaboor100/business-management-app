@@ -63,6 +63,12 @@ const HomeComponent = () => {
 
             <div className={styles.main_home2}>
                 <table>
+                <tr>
+                            <th>Name</th>
+                            <th>UID</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
                 {
                     state.allPublicApplications.map((doc)=>{
                         if(doc.status === "rejected"){
@@ -72,12 +78,7 @@ const HomeComponent = () => {
                         }else{
                             return(
                                 <>
-                        <tr>
-                            <th>Name</th>
-                            <th>UID</th>
-                            <th>Date</th>
-                            <th>Action</th>
-                        </tr>
+                     
                         <tr>
                            <td>{doc.name}</td>
                            <td>{doc.uid}</td>

@@ -12,17 +12,18 @@ const ApprovedAndRejectedComponent = () => {
 
         <div className={styles.main_home2}>
             <table>
-            {
-                state.allPublicApplications.map((doc)=>{
-                   if(doc.status === "rejected"){
-                    return(
-                        <>
-                             <tr>
+            <tr>
                     <th>Name</th>
                     <th>UID</th>
                     <th>Rejected Or Accepted Date</th>
                     <th>Status</th>
                 </tr>
+            {
+                state.allPublicApplications.map((doc)=>{
+                   if(doc.status === "rejected"){
+                    return(
+                        <>
+                   
                 <tr>
                    <td>{doc.name}</td>
                    <td>{doc.uid}</td>
