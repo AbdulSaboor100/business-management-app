@@ -5,6 +5,7 @@ import MainHome from '../screens/home/home';
 import MainLogin from '../screens/login/login';
 import SignUp from '../screens/sign-up/sign-up';
 import { auth , onAuthStateChanged , getDoc , doc, db ,onSnapshot  , collection  , getDocs} from './firebase';
+import ApprovedRejected from '../screens/approved-rejected/approved-rejected';
 
 const AppRoutes = () => {
     let {state , dispatch} = useContext(GlobalContext);
@@ -23,6 +24,8 @@ const AppRoutes = () => {
                     onSnapshot(publicApplications , (data)=>{
                         data.docChanges().forEach((changes)=>{
                             if(changes.type === 'added'){
+                                dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
+                            }else if(changes.type === "modified"){
                                 dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
                             }
                         })
@@ -44,6 +47,9 @@ const AppRoutes = () => {
                     
                             <Route path="/home" >
                                 <MainHome />
+                            </Route>
+                            <Route path="/approved-and-rejected" >
+                                <ApprovedRejected />
                             </Route>
                         
                             <Route path="/" exact>

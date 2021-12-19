@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { db , doc , updateDoc ,deleteDoc } from '../../configs/firebase';
 import { GlobalContext } from '../../context/context';
 import styles from './homeComponent.module.scss';
 
@@ -13,6 +14,47 @@ const HomeComponent = () => {
                convert(parseInt(seconds / 60 % 60)) + ":" +
                convert(seconds % 60)
       }
+
+      async function approved(e){
+        let uid = e.id;
+        try {
+            let dataRef = doc(db , "publcApplicaitons" , uid)
+            await updateDoc(dataRef,{
+                status : "approved",
+                approvedData : new Date()
+            })
+        } catch (error) {
+            console.log(error, "error")
+        }
+    }
+      
+
+      async function rejected(e){
+          let uid = e.id;
+          try {
+              let dataRef = doc(db , "publcApplicaitons" , uid)
+              await updateDoc(dataRef,{
+                  status : "rejected",
+                  rejectedDate : new Date(),
+              })
+          } catch (error) {
+              console.log(error, "error")
+          }
+      }
+
+      async function deleted(e){
+        let uid = e.id;
+        try {
+            let dataRef = doc(db , "publcApplicaitons" , uid)
+            await deleteDoc(dataRef)
+        } catch (error) {
+            console.log(error, "error")
+        }
+    }
+      
+
+
+
     return (
         <div className={styles.home_Component}>
             <div className={styles.main_home1}>
@@ -23,23 +65,31 @@ const HomeComponent = () => {
                 <table>
                 {
                     state.allPublicApplications.map((doc)=>{
-                        return(
-                            <>
-                                 <tr>
-                        <th>Name</th>
-                        <th>UID</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                       <td>{doc.name}</td>
-                       <td>{doc.uid}</td>
-                       <td>{convertSeconds(doc.createdAt.seconds)}</td>
-                       <td><span><i class="fas fa-check"></i></span><span><i class="far fa-times-circle"></i></span><span><i class="fas fa-trash"></i></span></td>
-                    </tr>
-                   
-                            </>
-                        )
+                        if(doc.status === "rejected"){
+                            return(
+                                <p>Dont Have Applications</p>
+                            )
+                        }else{
+                            return(
+                                <>
+                        <tr>
+                            <th>Name</th>
+                            <th>UID</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                           <td>{doc.name}</td>
+                           <td>{doc.uid}</td>
+                           <td>{convertSeconds(doc.createdAt.seconds)}</td>
+                           <td><span><i class="fas fa-check" onClick={(e)=>{approved(e.target)}} id={doc.uid}></i></span><span><i class="far fa-times-circle" id={doc.uid} onClick={(e)=>{rejected(e.target)}}></i></span><span><i class="fas fa-trash" id={doc.uid} onClick={(e)=>{deleted(e.target)}}></i></span></td>
+                        </tr>
+                       
+                                </>
+                            )
+                        }
+                      
+                        
                     })
                 }
                 </table>
