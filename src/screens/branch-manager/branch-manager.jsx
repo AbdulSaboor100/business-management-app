@@ -2,6 +2,7 @@ import React from 'react';
 import { Button , UncontrolledCollapse , Col ,Row } from 'reactstrap';
 import BranchManagerComponent from '../../components/branch-manager/branch-managerComponent';
 import HomeSideNav from '../../components/home-side-nav/home-side-nav';
+import styles from './branch-manager.module.scss'
 
 const BranchManager = () => {
     return (

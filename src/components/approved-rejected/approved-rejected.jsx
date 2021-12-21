@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/context';
 import styles from './approved-approved.module.scss';
 
+
+
 const ApprovedAndRejectedComponent = () => {
     let {state , dispatch} = useContext(GlobalContext)
     return (
@@ -10,7 +12,11 @@ const ApprovedAndRejectedComponent = () => {
             <p>Approved And Rejected Tab</p>
         </div>
 
-        <div className={styles.main_home2}>
+        {
+            state?.allApprovedApplications === undefined? (
+                <p style={{fontSize:20}}>No Applications Found</p>
+            ) : (
+                <div className={styles.main_home2}>
             <table>
             <tr>
                     <th>Name</th>
@@ -19,29 +25,41 @@ const ApprovedAndRejectedComponent = () => {
                     <th>Status</th>
                 </tr>
             {
-                state.allPublicApplications.map((doc)=>{
+                state.allApprovedApplications.map((doc)=>{
+                    console.log(doc.approvedObj)
                    if(doc.status === "rejected"){
                     return(
                         <>
                    
                 <tr>
-                   <td>{doc.name}</td>
-                   <td>{doc.uid}</td>
-                   <td>{doc.rejectedDate.seconds}</td>
-                   <td>Reject</td>
+                   <td>{doc.approvedObj.name}</td>
+                   <td>{doc.approvedObj.uid}</td>
+                   {/* <td>{doc.approvedObj.rejectedDate.seconds}</td> */}
+                   <td>{doc.status}</td>
                 </tr>
                
                         </>
                     )
-                   }else{
-                       return(
-                           <p>Dont Have Applcations</p>
-                       )
+                   }else if(doc.status === "approved"){
+                         return(
+                        <>
+                   
+                <tr>
+                   <td>{doc.approvedObj.name}</td>
+                   <td>{doc.approvedObj.uid}</td>
+                   <td>{doc.approvedObj.rejectedDate.seconds}</td>
+                   <td>{doc.status}</td>
+                </tr>
+               
+                        </>
+                    )
                    }
                 })
             }
             </table>
         </div>
+            )
+        }
         
     </div>
     )

@@ -6,6 +6,8 @@ import MainLogin from '../screens/login/login';
 import SignUp from '../screens/sign-up/sign-up';
 import { auth , onAuthStateChanged , getDoc , doc, db ,onSnapshot  , collection  , getDocs} from './firebase';
 import ApprovedRejected from '../screens/approved-rejected/approved-rejected';
+import BranchManagerComponent from '../components/branch-manager/branch-managerComponent';
+import BranchManager from '../screens/branch-manager/branch-manager';
 
 const AppRoutes = () => {
     let {state , dispatch} = useContext(GlobalContext);
@@ -21,15 +23,33 @@ const AppRoutes = () => {
                     dispatch({type : "ACTIVE_USER" , payload : userDetails.data()})
 
                     let publicApplications = collection(db, "publcApplicaitons")
+                    
                     onSnapshot(publicApplications , (data)=>{
                         data.docChanges().forEach((changes)=>{
                             if(changes.type === 'added'){
                                 dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
+                                
+                                
                             }else if(changes.type === "modified"){
                                 dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
                             }
                         })
                     })
+                    let approvedApplications = collection(db, "approvedApplications")
+                    onSnapshot(approvedApplications , (data)=>{
+                        data.docChanges().forEach((changes)=>{
+                            if(changes.type === 'added'){
+                                dispatch({type : "ALL_APPROVED_APPLICATIONS" , payload : changes.doc.data()})
+                                
+                            }else if(changes.type === "modified"){
+                                dispatch({type : "ALL_APPROVED_APPLICATIONS" , payload : changes.doc.data()})
+                            }
+                            else if(changes.type === "removed"){
+                                dispatch({type : "ALL_APPROVED_APPLICATIONS" , payload : changes.doc.data()})
+                            }
+                        })
+                    })
+
                 } catch (error) {
                     console.log("error : " , error)
                 }
@@ -58,6 +78,10 @@ const AppRoutes = () => {
                             <Route path="/sign-up">
                                 <SignUp />
                             </Route>
+                            <Route path="/branch-manager">
+                                <BranchManager />
+                            </Route>
+                      
                       
             
                 </Switch>
