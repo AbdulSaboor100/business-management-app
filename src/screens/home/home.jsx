@@ -13,7 +13,7 @@ const MainHome = () => {
     useEffect(()=>{
         if(state.allPublicApplications[0]){
             state.allPublicApplications.map((item,index)=>{
-        console.log("approved")
+                console.log("approved")
 
                 if(item){
                     setStateS(true)

@@ -7,6 +7,10 @@ import styles from './approved-approved.module.scss';
 const ApprovedAndRejectedComponent = () => {
     let {state , dispatch} = useContext(GlobalContext)
 
+    useEffect(()=>{
+        console.log(state.allApprovedApplications)
+    },[])
+
     return (
         <div className={styles.home_Component}>
         <div className={styles.main_home3}>
@@ -22,11 +26,13 @@ const ApprovedAndRejectedComponent = () => {
             ) : (
                 <div className={styles.main_home2}>
             <table>
-            <tr>
+            <tr>    
                     <th>Name</th>
                     <th>UID</th>
                     <th>Family Members</th>
                     <th>Family Income</th>
+                    <th>Monthly Ration Needed</th>
+                    <th>Person Nearest Branch</th>
                     <th>Status</th>
                 </tr>
             {
@@ -37,16 +43,19 @@ const ApprovedAndRejectedComponent = () => {
                         <>
                    
                 <tr>    
-                   <td>{doc.rejectedObj.name}</td>
-                   <td>{doc.rejectedObj.uid}</td>
-                   <td>{doc.rejectedObj.familyMembers}</td>
-                   <td>{doc.rejectedObj.monthlyIncome}</td>
+                   <td>{doc.rejectObj.name}</td>
+                   <td>{doc.rejectObj.uid}</td>
+                   <td>{doc.rejectObj.familyMembers}</td>
+                   <td>{doc.rejectObj.monthlyIncome}</td>
+                   <td>{doc.rejectObj.MonthlyRation}</td>
+                   <td>{doc.rejectObj.nearestOne.name}</td>
                    <td>{doc.status}</td>
                 </tr>
                
                         </>
                     )
                    }else if(doc.status === "approved"){
+                       console.log(doc.approvedObj.nearestOne.name)
                          return(
                         <>
                    
@@ -55,6 +64,8 @@ const ApprovedAndRejectedComponent = () => {
                    <td>{doc.approvedObj.uid}</td>
                    <td>{doc.approvedObj.familyMembers}</td>
                    <td>{doc.approvedObj.monthlyIncome}</td>
+                   <td>{doc.approvedObj.MonthlyRation}</td>
+                   <td>{doc.approvedObj.nearestOne.name}</td>
                    <td>{doc.status}</td>
                 </tr>
                

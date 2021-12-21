@@ -4,7 +4,11 @@ import { GlobalContext } from '../../context/context';
 import styles from './homeComponent.module.scss';
 
 const HomeComponent = () => {
-    let {state , dispatch} = useContext(GlobalContext)
+    let {state , dispatch} = useContext(GlobalContext);
+
+    useEffect(()=>{
+        console.log(state)
+    },[])
  
     function convertSeconds(seconds) {
         var convert = function(x) { return (x < 10) ? "0"+x : x; }
@@ -84,23 +88,36 @@ const HomeComponent = () => {
                     <div className={styles.main_home2}>
                 <table>
                 <tr>
-                            <th>Name</th>
-                            <th>UID</th>    
-                            <th>Date</th>
-                            <th>Action</th>
+                    <th>Name</th>
+                    <th>UID</th>
+                    <th>Family Members</th>
+                    <th>Family Income</th>
+                    <th>Monthly Ration Needed</th>
+                    <th>Person Nearest Branch</th>
+                    <th>Action</th>
                         </tr>
                         {
                     state.allPublicApplications.map((doc)=>{
                         if(doc){
                             return(
                                 <>
+
+                <tr>    
+                   <td>{doc.name}</td>
+                   <td>{doc.uid}</td>
+                   <td>{doc.familyMembers}</td>
+                   <td>{doc.monthlyIncome}</td>
+                   <td>{doc.MonthlyRation}</td>
+                   <td>{doc.nearestOne.name}</td>
+                   <td><span><i title="Accept" class="fas fa-check" onClick={(e)=>{approved(e.target)}} id={doc.uid}></i></span><span><i class="far fa-times-circle" title="Reject" id={doc.uid} onClick={(e)=>{rejected(e.target)}}></i></span><span><i class="fas fa-trash" title="Remove" id={doc.uid} onClick={(e)=>{deleted(e.target)}}></i></span></td>
+                </tr>
                      
-                        <tr>
+                        {/* <tr>
                            <td>{doc.name}</td>
                            <td>{doc.uid}</td>
                            <td>{convertSeconds(doc.createdAt.seconds)}</td>
                            <td><span><i class="fas fa-check" onClick={(e)=>{approved(e.target)}} id={doc.uid}></i></span><span><i class="far fa-times-circle" id={doc.uid} onClick={(e)=>{rejected(e.target)}}></i></span><span><i class="fas fa-trash" id={doc.uid} onClick={(e)=>{deleted(e.target)}}></i></span></td>
-                        </tr>
+                        </tr> */}
                        
                                 </>
                             )
