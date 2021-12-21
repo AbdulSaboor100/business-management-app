@@ -7,12 +7,24 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #f8faff;
+    background-color: #dedfe0;
+
+    .main_home3{
+        img{
+            width: 200px;
+        }
+    }
 
     padding-top: 5rem;
     .main_home1{
-        width: 85%;
-        font-size: 30px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 40px;
+        p{
+            color: #89c343;
+            font-weight: bold;
+        }
     }
     .main_home2{
         width: 100%;
@@ -24,16 +36,19 @@
         
         table{
             padding: 100px;
+           
             width: 70rem;
             height: auto;
-            border: 1px solid rgb(231, 231, 231);
             background-color: #ffffff;
             th{
                 padding: 20px 50px;
+                border: 1px solid rgb(214, 214, 214);
+                text-align: center;
             }
             td{
                 padding: 20px 50px;
                 cursor: pointer;
+                border: 1px solid rgb(214, 214, 214);
                 span{
                     padding: 0 10px;
                     cursor: pointer;

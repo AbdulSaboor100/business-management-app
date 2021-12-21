@@ -9,16 +9,25 @@ const MainHome = () => {
     let {state , dispatch} = useContext(GlobalContext);
     let [stateS , setStateS] = useState(false);
 
+
     useEffect(()=>{
-        console.log(state.allPublicApplications)
-        if(state.allPublicApplications){
-           setStateS(true)
+        if(state.allPublicApplications[0]){
+            state.allPublicApplications.map((item,index)=>{
+        console.log("approved")
+
+                if(item){
+                    setStateS(true)
+                }else{
+                    setStateS(true)
+                }
+            })
+            
         }else{
-            console.log(false)
+
+            setStateS(true)
         }
-        // setTimeout()
         
-    },[state.allPublicApplications])
+    },[state.allApprovedApplications])
 
     return (
         <div className={styles.container}>

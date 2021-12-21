@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgb(219, 219, 219);
+    .form{
+        background-color:#ffffff ;
+        width: 40%;
+        height: 50vh;
+        display: flex;
+        padding: 0 2rem;
+        border-radius: 10px;
+        // margin: 0 auto;
+        justify-content: center;
+         flex-direction: column;
+         p{
+             font-size: 30px;
+             font-weight: bold;
+             text-align: center;
+             position: relative;
+             bottom: 40px ;
+         }
+         
+        .input{
+            width: 100%;
+        }
+        .btn{
+            background-color: rgb(116, 238, 116);
+            padding: 10px 10px;
+            border: none;
+        }
+    }
+    
+
+}

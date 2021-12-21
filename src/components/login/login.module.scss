@@ -11,6 +11,12 @@
         background-color: #dedfe0;
         justify-content: center;
         align-items: center;
+        .main_home3{
+            img{
+                width: 150px;
+            }
+        }
+    
         .login_1{
             // margin: 10px 0;
             // width: 27.5%;
@@ -45,7 +51,7 @@
                 width: 20rem;
                 height: 2.5rem;
                 border: 1px solid rgb(197, 197, 197);
-                background-color:#141414;
+                background-color:#89c343;
                 color: white;
             }
         }
@@ -61,6 +67,7 @@
             p{
                 font-weight: bold;
                 font-size: 30px;
+                color: #89c343;
             }
         }
         .login_4{

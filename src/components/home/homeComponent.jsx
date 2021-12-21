@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import { db , doc , updateDoc ,deleteDoc , collection ,addDoc , setDoc } from '../../configs/firebase';
+import { db , doc , updateDoc ,deleteDoc , collection ,addDoc , setDoc , getDoc } from '../../configs/firebase';
 import { GlobalContext } from '../../context/context';
 import styles from './homeComponent.module.scss';
 
 const HomeComponent = () => {
     let {state , dispatch} = useContext(GlobalContext)
-    useEffect(function(){
-        console.log(state)
-    },[state.allPublicApplications])
+ 
     function convertSeconds(seconds) {
         var convert = function(x) { return (x < 10) ? "0"+x : x; }
         return convert(parseInt(seconds / (60*60))) + ":" +
@@ -18,18 +16,19 @@ const HomeComponent = () => {
       async function approved(e){
         let uid = e.id;
         try {
-            state.allPublicApplications.map(async (doc1,item)=>{
-                if(doc1.uid === uid){
-                    let dataRef = doc(db , "publcApplicaitons" , uid)
-                    await deleteDoc(dataRef)
-                let dataRef2 = doc(db, "approvedApplications" , uid)
-                await setDoc(dataRef2 ,{ 
-                approvedObj : doc1,
-                status : "approved"
+         
+
+            let dataRef1 = doc(db , "publcApplicaitons" , uid)
+            let data1 = await getDoc(dataRef1)
+            
+            let dataRef2 = doc(db , "approvedApplications" , uid)
+            await setDoc(dataRef2 , {
+                approvedObj : data1.data(),
+                status : "approved",
+                approvedDate : new Date()
             })
 
-            }
-            })
+            await deleteDoc(dataRef1)
         } catch (error) {
             console.log(error, "error")
         }
@@ -39,18 +38,17 @@ const HomeComponent = () => {
       async function rejected(e){
         let uid = e.id;
         try {
-            state.allPublicApplications.map(async (doc,item)=>{
-                if(doc.uid === uid){
-                    let deleteDocRef = doc(db , "publcApplicaitons" , uid)
-                    await deleteDoc(deleteDocRef)   
-                    let dataRef = doc(db, "rejectedApplications" , uid )
-                    await setDoc(dataRef ,{ 
-                approvedObj : doc,
-                status : "approved"
+            let dataRef1 = doc(db , "publcApplicaitons" , uid)
+            let data1 = await getDoc(dataRef1)
+            
+            let dataRef2 = doc(db , "approvedApplications" , uid)
+            await setDoc(dataRef2 , {
+                rejectObj : data1.data(),
+                status : "rejected",
+                rejectedDate : new Date()
             })
 
-            }
-            })
+            await deleteDoc(dataRef1)
         } catch (error) {
             console.log(error, "error")
         }
@@ -73,8 +71,11 @@ const HomeComponent = () => {
 
     return (
         <div className={styles.home_Component}>
+              <div className={styles.main_home3}>
+            <img src="/Assets/LogoKhanaSabkliye.png"  />
+        </div>
             <div className={styles.main_home1}>
-                <p>Requested Tab</p>
+                <p>Recieved Food Requests</p>
             </div>
 
         
@@ -106,7 +107,7 @@ const HomeComponent = () => {
                             
                         }else{
                             return(
-                                <p>Dont Have Applications</p>
+                                <p style={{fontSize:"30px" , paddingTop:"3rem"}}>Dont Have Applications</p>
                             )
                           
                         }
@@ -118,7 +119,7 @@ const HomeComponent = () => {
             </div>
            
                 ) : (
-                    <p>Don't Have Applications</p>
+                    <p style={{fontSize:"30px" ,paddingTop:'3rem'}}>Don't Have Applications</p>
                 )
             }
             

@@ -8,6 +8,7 @@ import { auth , onAuthStateChanged , getDoc , doc, db ,onSnapshot  , collection 
 import ApprovedRejected from '../screens/approved-rejected/approved-rejected';
 import BranchManagerComponent from '../components/branch-manager/branch-managerComponent';
 import BranchManager from '../screens/branch-manager/branch-manager';
+import LogoutFunc from '../screens/logout/logout';
 
 const AppRoutes = () => {
     let {state , dispatch} = useContext(GlobalContext);
@@ -81,7 +82,9 @@ const AppRoutes = () => {
                             <Route path="/branch-manager">
                                 <BranchManager />
                             </Route>
-                      
+                            <Route path="/logout">
+                                <LogoutFunc />
+                            </Route>
                       
             
                 </Switch>

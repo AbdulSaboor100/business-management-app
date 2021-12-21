@@ -12,6 +12,8 @@ const LoginComponent = () => {
         try {
             let {user} = await signInWithEmailAndPassword(auth, email , password)
             if(user){
+                localStorage.setItem('email' , email)
+                localStorage.setItem('password' , password)
                 histroy.push('/home')
             }
         } catch (error) {
@@ -22,6 +24,9 @@ const LoginComponent = () => {
     return (
         <div className={styles.main_login}>
         <div className={styles.main2}>
+        <div className={styles.main_home3}>
+            <img src="/Assets/LogoKhanaSabkliye.png"  />
+        </div>
             <div className={styles.login_5}>
                 <p>Login</p>
             </div>
