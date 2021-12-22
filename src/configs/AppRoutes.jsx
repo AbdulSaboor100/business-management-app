@@ -19,6 +19,7 @@ const AppRoutes = () => {
             if(user){
                 console.log(user , "user Found");
                 setUserStatus(user)
+                
                 try {
                     let userRef = doc(db, 'users' , user.uid)
                     let userDetails = await getDoc(userRef);

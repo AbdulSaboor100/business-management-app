@@ -15,6 +15,26 @@
             width: 150px;
         }
     }
+    .main_home4{
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        margin-bottom: 1rem;
+        input{
+            border: 1px solid rgb(214, 214, 214);
+            width: 16rem;
+            height: 2rem;
+            margin: 0 10px;
+        }
+        button{
+            border: 1px solid rgb(214, 214, 214);
+            background-color: #89c343;
+            color: white;
+            width: 5rem;
+            height: 2rem;
+        }
+    }
 
     .main_home1{
         width: 100%;

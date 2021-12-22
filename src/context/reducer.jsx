@@ -11,6 +11,7 @@ export function reducer(state, action) {
                 activeUser: action.payload
             }
         }
+       
         case "ALL_PUBLIC_APPLICATIONS": {
             
             let userClone = state.allPublicApplications.slice(0)
