@@ -29,6 +29,7 @@ const BranchManagerComponent = () => {
                 let ourUser = await signInWithEmailAndPassword(auth , email , password)
                 if(ourUser.user){
                     setCheck(false)
+                    alert("Manager Added")
                 }
               
             }
