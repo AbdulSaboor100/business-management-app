@@ -91,10 +91,10 @@ const HomeComponent = () => {
                     <th>Name</th>
                     <th>Cnic</th>
                     <th>UID</th>
-                    <th>Family Members</th>
-                    <th>Family Income</th>
-                    <th>Monthly Ration Needed</th>
-                    <th>Person Nearest Branch</th>
+                    <th>Family</th>
+                    <th>Income</th>
+                    <th>Ration</th>
+                    <th>Branch</th>
                     <th>Action</th>
                         </tr>
                         {

@@ -8,18 +8,20 @@
     justify-content: flex-start;
     align-items: center;
     background-color: #dedfe0;
-
+    // padding: 0 20px;
+    // padding: 0 10px ;
     .main_home3{
         img{
-            width: 200px;
+            width: 150px;
         }
     }
 
     .main_home1{
         width: 100%;
         text-align: center;
-        margin-bottom: 2rem;
-        font-size: 40px;
+        margin-bottom: 1rem;
+        font-size: 30px;
+
         p{
             color: #89c343;
             font-weight: bold;
@@ -27,27 +29,27 @@
     }
     .main_home2{
         width: 100%;
-        height: 100%;
+        // font-size: 20px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
         overflow-y: scroll;
         height: 50%;
-
         table{
-            padding: 100px;
-           
-            width: 70rem;
+            // padding: 100px;
+            width: 20%;
             height: auto;
             background-color: #ffffff;
+
             th{
-                padding: 20px 20px;
+                padding: 20px 10px;
                 border: 1px solid rgb(214, 214, 214);
                 text-align: center;
-                white-space: nowrap;
+                // white-space: nowrap;
+
             }
             td{
-                padding: 20px 20px;
+                padding: 20px 10px;
                 cursor: pointer;
                 border: 1px solid rgb(214, 214, 214);
                 text-align: center;
