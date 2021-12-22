@@ -34,6 +34,9 @@ const AppRoutes = () => {
                             }else if(changes.type === "modified"){
                                 dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
                             }
+                            else if(changes.type === "removed"){
+                                dispatch({type : "ALL_PUBLIC_APPLICATIONS" , payload : changes.doc.data()})
+                            }
                         })
                     })
                     let approvedApplications = collection(db, "approvedApplications")

@@ -28,6 +28,7 @@ const ApprovedAndRejectedComponent = () => {
             <table>
             <tr>    
                     <th>Name</th>
+                    <th>Cnic</th>
                     <th>UID</th>
                     <th>Family Members</th>
                     <th>Family Income</th>
@@ -44,6 +45,7 @@ const ApprovedAndRejectedComponent = () => {
                    
                 <tr>    
                    <td>{doc.rejectObj.name}</td>
+                   <td>{doc.rejectObj.cnic}</td>
                    <td>{doc.rejectObj.uid}</td>
                    <td>{doc.rejectObj.familyMembers}</td>
                    <td>{doc.rejectObj.monthlyIncome}</td>
@@ -61,6 +63,7 @@ const ApprovedAndRejectedComponent = () => {
                    
                 <tr>
                    <td>{doc.approvedObj.name}</td>
+                   <td>{doc.approvedObj.cnic}</td>
                    <td>{doc.approvedObj.uid}</td>
                    <td>{doc.approvedObj.familyMembers}</td>
                    <td>{doc.approvedObj.monthlyIncome}</td>

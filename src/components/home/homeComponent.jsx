@@ -89,6 +89,7 @@ const HomeComponent = () => {
                 <table>
                 <tr>
                     <th>Name</th>
+                    <th>Cnic</th>
                     <th>UID</th>
                     <th>Family Members</th>
                     <th>Family Income</th>
@@ -104,6 +105,7 @@ const HomeComponent = () => {
 
                 <tr>    
                    <td>{doc.name}</td>
+                   <td>{doc.cnic}</td>
                    <td>{doc.uid}</td>
                    <td>{doc.familyMembers}</td>
                    <td>{doc.monthlyIncome}</td>
