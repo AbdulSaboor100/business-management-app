@@ -41,7 +41,7 @@ const BranchManagerComponent = () => {
         <div className={styles.container}>
             
             <Form inline  className={styles.form} >
-            <p style={{color:'#89c343'}}>Add Branch Manger </p>
+            <p style={{color:'#89c343'}}>Add Branch Manager </p>
     <FormGroup floating>
       <Input
         id="exampleEmail"
