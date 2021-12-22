@@ -29,6 +29,18 @@ export function reducer(state, action) {
                 allApprovedApplications: userClone
             }
         }
+        case "DESTORYING_DATA_FROM_ALL_PUBLIC_APPLICATIONS": {
+            return {
+                ...state,
+                allPublicApplications: action.payload
+            }
+        }
+        case "DESTORYING_DATA_FROM_ALL_APPROVED_APPLICATIONS": {
+            return {
+                ...state,
+                allApprovedApplications: action.payload
+            }
+        }
 
         default:
             return state;

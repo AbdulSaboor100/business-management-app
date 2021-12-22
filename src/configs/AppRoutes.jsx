@@ -12,7 +12,8 @@ import LogoutFunc from '../screens/logout/logout';
 
 const AppRoutes = () => {
     let {state , dispatch} = useContext(GlobalContext);
-    let [userStatus , setUserStatus] = useState()
+    let [userStatus , setUserStatus] = useState();
+    let {userData , setUserData} = useState({})
     useEffect(()=>{
         onAuthStateChanged(auth ,async (user)=>{
             if(user){
@@ -22,7 +23,6 @@ const AppRoutes = () => {
                     let userRef = doc(db, 'users' , user.uid)
                     let userDetails = await getDoc(userRef);
                     dispatch({type : "ACTIVE_USER" , payload : userDetails.data()})
-
                     let publicApplications = collection(db, "publcApplicaitons")
                     
                     onSnapshot(publicApplications , (data)=>{
@@ -58,9 +58,13 @@ const AppRoutes = () => {
                     console.log("error : " , error)
                 }
             }else{
-                console.log("user not found");
+                console.log("user not found" , state);
                 setUserStatus(null)
-                dispatch({type : "ACTIVE_USER" , payload : undefined})
+                dispatch({type : "ACTIVE_USER" , payload : undefined});
+                dispatch({type : "DESTORYING_DATA_FROM_ALL_PUBLIC_APPLICATIONS" , payload : []}) 
+                dispatch({type : "DESTORYING_DATA_FROM_ALL_APPROVED_APPLICATIONS" , payload : []})
+
+
             }
         })
     },[])
@@ -68,19 +72,16 @@ const AppRoutes = () => {
         <div>
             <Router>
                 <Switch>
-                    
-                            <Route path="/home" >
+                           
+
+                            {
+                                auth.currentUser ? (
+                                    <>
+                            <Route path="/" exact >
                                 <MainHome />
                             </Route>
                             <Route path="/approved-and-rejected" >
                                 <ApprovedRejected />
-                            </Route>
-                        
-                            <Route path="/" exact>
-                                <MainLogin />
-                            </Route>
-                            <Route path="/sign-up">
-                                <SignUp />
                             </Route>
                             <Route path="/branch-manager">
                                 <BranchManager />
@@ -88,8 +89,17 @@ const AppRoutes = () => {
                             <Route path="/logout">
                                 <LogoutFunc />
                             </Route>
+                                    </>
+                                ) : (
+                                    <Route path="/" exact >
+                                    <MainLogin />
+                                </Route>
+                                )
+                            }
                       
-            
+                            {/* <Route path="/sign-up">
+                                <SignUp />
+                            </Route> */}
                 </Switch>
             </Router>
         </div>

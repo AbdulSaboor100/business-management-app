@@ -40,15 +40,18 @@
             height: auto;
             background-color: #ffffff;
             th{
-                padding: 20px 50px;
+                padding: 20px 20px;
                 border: 1px solid rgb(214, 214, 214);
                 text-align: center;
+                white-space: nowrap;
+
             }
             td{
                 padding: 20px 20px;
                 cursor: pointer;
                 border: 1px solid rgb(214, 214, 214);
                 text-align: center;
+                white-space: nowrap;
                 span{
                     padding: 0 10px;
                     cursor: pointer;

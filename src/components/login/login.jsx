@@ -14,7 +14,7 @@ const LoginComponent = () => {
             if(user){
                 localStorage.setItem('email' , email)
                 localStorage.setItem('password' , password)
-                histroy.push('/home')
+                histroy.push('/')
             }
         } catch (error) {
             console.log(error,"error")
@@ -31,10 +31,10 @@ const LoginComponent = () => {
                 <p>Login</p>
             </div>
             <div className={styles.login_1}>
-                <input placeholder='Email' type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
+                <input placeholder='Email' type="text" required value={email} onChange={(e)=>{setEmail(e.target.value)}} />
             </div>
             <div className={styles.login_2}>
-                <input placeholder='Password' type="text" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
+                <input placeholder='Password' type="password" required value={password} onChange={(e)=>{setPassword(e.target.value)}} />
             </div>
             <div className={styles.login_3}>
                 <button onClick={loginFunc}>Log in</button>
